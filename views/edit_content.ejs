@@ -1,0 +1,61 @@
+<%- include('layout/header') %>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body p-5">
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="fas fa-edit text-success fs-2 me-3"></i>
+                        <h2 class="fw-bold text-success mb-0">Edit Your Story</h2>
+                    </div>
+                    
+                    <hr class="mb-4">
+
+                    <form action="/update/<%= post._id %>" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Title</label>
+                            <input type="text" name="title" class="form-control form-control-lg" value="<%= post.title %>" placeholder="Enter a catchy title..." required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Category</label>
+                            <select name="category" class="form-select">
+                                <option value="কবিতা" <%= post.category === 'কবিতা' ? 'selected' : '' %>>কবিতা (Poetry)</option>
+                                <option value="গল্প" <%= post.category === 'গল্প' ? 'selected' : '' %>>গল্প (Story)</option>
+                                <option value="অন্যান্য" <%= post.category === 'অন্যান্য' ? 'selected' : '' %>>অন্যান্য (Others)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Content</label>
+                            <textarea name="body" class="form-control" rows="8" placeholder="Share your happiness..." required><%= post.body %></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Post Image</label>
+                            <input type="file" name="image" class="form-control mb-2" accept="image/*">
+                            
+                            <% if(post.image) { %>
+                                <div class="mt-2">
+                                    <small class="text-muted d-block mb-1">Current Image:</small>
+                                    <img src="/<%= post.image %>" alt="Current Post Image" style="max-width: 200px; border-radius: 8px;" class="img-thumbnail shadow-sm">
+                                </div>
+                            <% } %>
+                            <div class="form-text">Leave blank if you don't want to change the photo.</div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <button type="submit" class="btn btn-success btn-lg px-5 shadow-sm">
+                                <i class="fas fa-save me-2"></i>Update Post
+                            </button>
+                            <a href="/" class="btn btn-outline-secondary btn-lg px-4">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer') %>

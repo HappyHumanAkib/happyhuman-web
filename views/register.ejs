@@ -1,0 +1,35 @@
+<%- include('layout/header') %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-success">Join HappyHuman</h2>
+                        <p class="text-muted">Create an account to participate</p>
+                    </div>
+                    <form action="/auth/register" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Full Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Akib Al Hassan" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="akib@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 py-2 fw-bold text-white">Create Account</button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <span class="text-muted">Already have an account?</span> 
+                        <a href="/auth/login" class="text-decoration-none fw-bold text-success">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('layout/footer') %>
